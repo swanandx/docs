@@ -15,6 +15,9 @@
       "to": "#07C983"
     }
   },
+  "primaryTab": {
+    "name": "Platform"
+  },
   "topbarLinks": [
     {
       "name": "Support",
@@ -27,15 +30,23 @@
   },
   "tabs": [
     {
-      "name": "API Reference",
+      "name": "Integrations",
+      "url": "integration"
+    },
+    {
+      "name": "API Referene",
       "url": "api-reference"
+    },
+    {
+      "name": "Release Notes",
+      "url": "releases"
     }
   ],
   "anchors": [
     {
-      "name": "Documentation",
+      "name": "Bytebeam",
       "icon": "book-open-cover",
-      "url": "https://mintlify.com/docs"
+      "url": "hehe-boi"
     },
     {
       "name": "Community",
@@ -50,28 +61,47 @@
   ],
   "navigation": [
     {
-      "group": "Get Started",
+      "group": "Bytebeam Cloud",
       "pages": [
-        "introduction",
-        "quickstart",
-        "development"
-      ]
-    },
-    {
-      "group": "Essentials",
-      "pages": [
-        "essentials/markdown",
-        "essentials/code",
-        "essentials/images",
-        "essentials/settings",
-        "essentials/navigation",
-        "essentials/reusable-snippets"
+        "platform/intro",
+        "platform/concepts",
+        {
+          "group": "Guides",
+          "pages": ["platform/guides/settings"]
+        }
       ]
     },
     {
       "group": "API Documentation",
+      "pages": ["api-reference/introduction"]
+    },
+    {
+      "group": "Module Integration Guides",
       "pages": [
-        "api-reference/introduction"
+        "integration/overview",
+        {
+          "group": "ESP-IDF",
+          "pages": ["integration/esp-idf/docs"]
+        },
+        {
+          "group": "Rust ESP-IDF",
+          "pages": [
+            "integration/rust-esp-idf/docs",
+            "integration/rust-esp-idf/setup-cloud"
+          ]
+        },
+        {
+          "group": "Arduino",
+          "pages": ["integration/arduino/docs"]
+        },
+        {
+          "group": "Linux",
+          "pages": ["integration/linux/docs"]
+        },
+        {
+          "group": "Building a custom client",
+          "pages": ["integration/custom/docs"]
+        }
       ]
     },
     {
@@ -81,6 +111,10 @@
         "api-reference/endpoint/create",
         "api-reference/endpoint/delete"
       ]
+    },
+    {
+      "group": "Release Notes",
+      "pages": ["releases/R25 02-Oct-2024", "releases/R1 19-Jan-2023"]
     }
   ],
   "footerSocials": {

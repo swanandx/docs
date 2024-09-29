@@ -1,0 +1,77 @@
+---
+title: Setting up Bytebeam ESP-RS SDK
+slug: A3WX-setting-up-bytebeam-esp-rs-sdk
+description: This section provides step by step instructions on how to set up and start using the [﻿](https://github.com/bytebeamio/esp-bytebeam-sdk)﻿[﻿](https://github.com/bytebeamio/esp-bytebeam-sdk)[Bytebeam ESP-RS SDK](https://github.com/bytebeamio/bytebeam-esp-idf-sdk)﻿ . This SDK can be used with any ESP32 board. The only requirements are WiFi and a working internet connection.
+createdAt: 2023-02-01T14:37:17.000Z
+updatedAt: 2023-10-22T14:40:37.425Z
+---
+
+
+<Steps>
+  <Step title="Provisoin device with config">
+  **bytebeam-esp-rs** requires **device\_config.json** file in SPIFFS partition. We provide a tool for provisioning device.
+
+  ```shell
+  $ git clone https://github.com/bytebeamio/bytebeam-esp-rs-sdk.git
+  $ cd bytebeam-esp-rs-sdk/tools/provision
+  ```
+
+  Download the device configuration JSON file from Bytebeam cloud by following the Provisioning a Device guide and place it inside **the provision** project with the name **device\_config.json**
+
+  You can use [cargo espflash](https://github.com/esp-rs/espflash) to build the project and flash it.
+
+  Connect your ESP board using USB and run the following command inside **provision** project :
+
+  ```shell
+  cargo espflash --release --monitor --partition-table partitions.csv
+  ```
+
+  *NOTE: If you want to use custom partition table for your application, please replace ****partitions.csv**** file provided in provision project*
+
+  You will see a log line with "Provisioning Done" message! You can then terminate it and move on to next step.
+  </Step>
+  <Step title="Using bytebeam-esp-rs-sdk">
+  Add **bytebeam-esp-rs** as a dependency in your **Cargo.toml**
+
+  ```shell
+  cargo add bytebeam-esp-rs
+  ```
+
+  This will add an entry in your **Cargo.toml** like:
+
+  ```none
+  [dependency]
+  bytebeam-esp-rs = "0.1.0"
+  ```
+
+  Now you can start using Bytebeam client in your project
+
+  ```rust
+  /* other imports */
+  use bytebeam_esp_rs::ByteBeamClient;
+
+  fn main() -> anyhow::Result<()> {
+      /*...
+      Setup esp for Rust
+      Connect to internet and initialize SNTP/NTP to sync time
+      ...*/
+
+      let bytebeam_client = ByteBeamClient::init()?;
+
+      // use bytebeam_client here!
+  }
+
+  ```
+
+  Check out [examples](https://github.com/bytebeamio/bytebeam-esp-rs-sdk/tree/main/examples) for more details.
+  </Step>
+  <Step title="Build and Flash">
+  Run this command within your application project :
+
+  ```shell
+  cargo espflash --release --monitor --partition-table partitions.csv
+  ```
+
+  *NOTE: Use the same ****partitions.csv**** that you used for provisioning! If you didn't use a custom table, you can download and use *[*partitions.csv*](https://github.com/bytebeamio/bytebeam-esp-rs-sdk/blob/main/tools/provision/partitions.csv)*  from the provision app!*
+  </Step>
+</Steps>

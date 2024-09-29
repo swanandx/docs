@@ -1,0 +1,47 @@
+---
+title: R1 19-Jan-2023
+slug: FMqX-r1-19-jan-2023
+description: Product Update by 19 Jan 2023, Microsoft Login, Aggregate Panel, Access multiple projects in same browser and other changes
+createdAt: Thu Jan 19 2023 16:32:34 GMT+0000 (Coordinated Universal Time)
+updatedAt: Fri Sep 01 2023 07:23:14 GMT+0000 (Coordinated Universal Time)
+---
+
+## Support for Microsoft login
+
+You can now login to Bytebeam with your microsoft account
+
+![](../assets/nURMWOX_pyeq98lrMS729_image.png)
+
+## Aggregate values panel now supports adding multiple aggregates
+
+This will now allow you to see min/max/avg of a metric in a single widget
+
+![](../../assets/fTdlbfU5C12bHZxiLaz3t_image.png)
+
+## You can now sort actions to show incomplete actions first
+
+Bytebeam only pushes actions to devices if there is no other pending action. An annoyance with this was that if there was an action that was triggered long ago and has not yet completed it was hard to find that action out. With this change you can now see the incomplete actions at the top of the page.
+
+![](../../assets/kzZd99S0lgS-a5iVc47Hx_image.png)
+
+
+
+## You can now access multiple projects in the same browser
+
+Earlier you could only access one project at once. If you had two tabs open and switched to a different project in one of them, the other would also be automatically switched to the new project. This was happenign as project information was stored in shared local storage between tabs. We've moved the project information to the URL. Another side effect of this is that it also makes sharing dashboard URLs easlier.
+
+![](../assets/EiZdCNzfPds9WDdX065KJ_image.png)
+
+## Last value panel now supports filters
+
+
+
+You can now filter out rows being considered in last value panel. Similar support for other panels will be rolled out in upcoming releases.
+
+![](../assets/D_8LANs1xt0brKIlJztio_image.png)
+
+## Bug fixes & Minor changes
+
+- UI elements were realigned and resized to be symmetrical in edit panel widgets
+- Emails are now stored in lowercase in the database to prevent login errors when emails are manually added in a different case.
+- Added appropriate response to handle 404 errors in the backend
